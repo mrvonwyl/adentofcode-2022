@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "start": "node ./bin/index.js",
+    "start:watch": "nodemon -e ts,js --watch src/**/*.ts --exec \"npm run build && npm run start\"",
     "build": "tsc -p ./tsconfig.app.json",
     "build:start": "tsc -p ./tsconfig.app.json && npm run start",
-    "build:watch": "nodemon -e ts,js --watch src/**/*.ts --exec npm run build:start",
     "test": "npm run test"
   },
   "repository": {

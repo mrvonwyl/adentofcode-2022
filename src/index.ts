@@ -1,6 +1,17 @@
-import * as day1 from './1';
+const dayToExecute = new Date().getDate();
 
-Object.values(day1).forEach((f, index) => {
-  const result = f();
-  console.log(`Day 1, Challenge ${index + 1}:`, result);
-});
+import(`./day-${dayToExecute}`).then(
+  (imports) => {
+    Object.values(imports)
+      .map((fn) => fn as () => unknown)
+      .forEach((fn, index) => {
+        console.log(`Day ${dayToExecute}, Challenge ${index + 1}:`, fn());
+      });
+  },
+  (reason) => {
+    console.log(
+      `There is nothing to execute for Day ${dayToExecute}. Reason: `,
+      reason
+    );
+  }
+);
