@@ -4,8 +4,6 @@ export function challenge1(): number {
   return data2
     .split('\n')
     .map((x) => {
-      // console.log(x);
-
       const p = x.split(' ');
 
       const a = p[0];
@@ -22,9 +20,9 @@ export function challenge1(): number {
       }
 
       if (
-        (a === 'A' && b == 'X') ||
-        (a === 'B' && b == 'Y') ||
-        (a === 'C' && b == 'Z')
+        (a === 'A' && b === 'X') ||
+        (a === 'B' && b === 'Y') ||
+        (a === 'C' && b === 'Z')
       ) {
         aggre = aggre + 3;
       }
@@ -37,33 +35,25 @@ export function challenge1(): number {
         aggre = aggre + 6;
       }
 
-      // console.log(aggre);
-
       return aggre;
     })
     .reduce((a, b) => a + b, 0);
 }
 
-// A X =? Rock 1
+// A X = Rock 1
 // B Y = Paper 2
 // C Z = Scissors 3
 
 // X lose, Y draw, Z win
 
-const datax = `A Y
-B X
-C Z`;
-
 export function challenge2(): number {
   return data2
     .split('\n')
     .map((x) => {
-      // console.log(x);
-
       const p = x.split(' ');
 
-      const a = p[0];
-      const b = p[1];
+      const a = p[0] as 'A' | 'B' | 'C';
+      const b = p[1] as 'X' | 'Y' | 'Z';
 
       let aggre = 0;
 
@@ -93,7 +83,7 @@ export function challenge2(): number {
         },
       };
 
-      aggre = aggre + map[a as 'A' | 'B' | 'C'][b as 'X' | 'Y' | 'Z'];
+      aggre = aggre + map[a][b];
 
       return aggre;
     })
