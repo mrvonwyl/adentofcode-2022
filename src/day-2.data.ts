@@ -1,3 +1,11 @@
+export const tdata = `A Y
+B X
+C Z`;
+
+export const tresult1 = 15;
+
+export const tresult2 = 12;
+
 export const data2 = `A Z
 C Z
 A X

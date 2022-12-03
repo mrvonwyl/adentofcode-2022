@@ -1,3 +1,14 @@
+export const tdata = `vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`;
+
+export const tresult1 = 157;
+
+export const tresult2 = 70;
+
 export const data = `GwrhJPDJCZFRcwfZWV
 LjnQlqNpjjmpmQlLlqNfZRvQcTWcTSTTZcSQcZ
 nNqjdspspngnmjmslqmjjjCDGrHPHMGddGCMCGPPPJWC

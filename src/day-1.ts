@@ -1,9 +1,10 @@
 import { data } from './day-1.data';
+import { sortDesc, sum } from './util/array.util';
 
 export function challenge1(): number {
   return data
     .split('\n\n')
-    .map((c) => c.split('\n').reduce((a, b) => +a + +b, 0))
+    .map(sumCaloriesPerElf)
     .reduce((a, b) => {
       return Math.max(a, b);
     });
@@ -12,8 +13,12 @@ export function challenge1(): number {
 export default function challange2(): number {
   return data
     .split('\n\n')
-    .map((c) => c.split('\n').reduce((a, b) => +a + +b, 0))
-    .sort((a, b) => b - a)
+    .map(sumCaloriesPerElf)
+    .sort(sortDesc)
     .slice(0, 3)
-    .reduce((a, b) => a + b, 0);
+    .reduce(sum, 0);
 }
+
+const sumCaloriesPerElf = (
+  caloriesPerElf: string
+): number => caloriesPerElf.split('\n').reduce(sum, 0);

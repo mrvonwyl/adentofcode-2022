@@ -5,7 +5,10 @@ import(`./day-3`).then(
     Object.values(imports)
       .map((fn) => fn as () => unknown)
       .forEach((fn, index) => {
-        console.log(`Day ${dayToExecute}, Challenge ${index + 1}:`, fn());
+        console.log(
+          `Day ${dayToExecute}, Challenge ${index + 1}:`,
+          fn()
+        );
       });
   },
   (reason) => {

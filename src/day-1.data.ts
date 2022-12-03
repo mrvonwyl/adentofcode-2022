@@ -1,3 +1,22 @@
+export const tdata = `1000;
+2000;
+3000;
+
+4000;
+
+5000;
+6000;
+
+7000;
+8000;
+9000;
+
+10000`;
+
+export const tresult1 = 24000;
+
+export const tresult2 = 45000;
+
 export const data = `
 5118
 5554
