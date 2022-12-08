@@ -6,6 +6,11 @@ export const sum = (
   b: string | number
 ): number => a + +b;
 
+export const max = (
+  a: number,
+  b: string | number
+): number => Math.max(a, +b);
+
 export const splitArrayIntoChunks = <T>(
   array: T[],
   chunkSize: number
