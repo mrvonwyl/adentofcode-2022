@@ -1,6 +1,6 @@
 const dayToExecute = new Date().getDate();
 
-import(`./day-6`).then(
+import(`./day-7`).then(
   (imports) => {
     Object.values(imports)
       .map((fn) => fn as () => unknown)
