@@ -9,6 +9,15 @@ D 1
 L 5
 R 2`;
 
+const tdata9_2 = `R 5
+U 8
+L 8
+D 3
+R 17
+D 10
+L 25
+U 20`;
+
 type Direction = 'U' | 'D' | 'L' | 'R';
 
 type Index = { x: number; y: number };
@@ -21,19 +30,16 @@ export function challenge1(): number {
   return ropeBridge.moveAll();
 }
 
-// export function challenge1(): number {
-//   const instructions = sanitizeInstructions(data9);
+export function challenge2(): number {
+  const instructions = sanitizeInstructions(data9);
 
-//   const ropeBridge = new RopeBridge(instructions, 10);
+  const ropeBridge = new RopeBridge(instructions, 10);
 
-//   return ropeBridge.moveAll();
-// }
+  return ropeBridge.moveAll();
+}
 
 class RopeBridge {
   private logger = new Logger();
-
-  private headIndex: Index = { x: 0, y: 0 };
-  private tailIndex: Index = { x: 0, y: 0 };
 
   private indices: Index[] = [];
 
@@ -77,26 +83,28 @@ class RopeBridge {
 
     this.logger.log('Move: ', direction);
 
-    const newHeadIndex = this.calculateNewHeadIndex(
-      direction,
-      this.headIndex
-    );
-
-    this.headIndex = newHeadIndex;
-
-    const newTailIndex = this.calculateNewTailIndex(
-      newHeadIndex,
-      this.tailIndex
-    );
-
-    this.tailIndex = newTailIndex;
+    this.indices.forEach((index, i, array) => {
+      if (i === 0) {
+        this.indices[i] = this.calculateNewHeadIndex(
+          direction,
+          index
+        );
+      } else {
+        const newRelativeIndex = array[i - 1];
+        this.indices[i] = this.calculateNewTailIndex(
+          newRelativeIndex,
+          index
+        );
+      }
+    });
 
     this.logCurrentState();
 
-    this.trackState(this.tailIndex);
+    this.trackState();
   }
 
-  private trackState({ x, y }: Index): void {
+  private trackState(): void {
+    const { x, y } = this.indices.slice(-1)[0];
     const value = `x:${x},y:${y}`;
 
     this.visitedTailIndices.add(value);
